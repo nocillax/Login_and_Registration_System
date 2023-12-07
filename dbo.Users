@@ -10,7 +10,6 @@ CREATE TABLE Users (
     UserRole NVARCHAR(20) DEFAULT 'User',
     PhoneNumber NVARCHAR(20),
     Religion NVARCHAR(50),
-    DateOfBirth DATE,
     Nationality NVARCHAR(50),
     MaritalStatus NVARCHAR(20),
     University NVARCHAR(200)
