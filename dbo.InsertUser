@@ -32,8 +32,8 @@ BEGIN
         END
 
         -- Insert the new user
-        INSERT INTO Users (FirstName, LastName, Username, Password, Email, UserRole, PhoneNumber, Religion, DateOfBirth, Nationality, MaritalStatus, University)
-        VALUES (@FirstName, @LastName, @Username, @Password, @Email, @UserRole, @PhoneNumber, @Religion, @DateOfBirth, @Nationality, @MaritalStatus, @University);
+        INSERT INTO Users (FirstName, LastName, Username, Password, Email, UserRole, PhoneNumber, Religion, Nationality, MaritalStatus, University)
+        VALUES (@FirstName, @LastName, @Username, @Password, @Email, @UserRole, @PhoneNumber, @Religion, @Nationality, @MaritalStatus, @University);
     END TRY
     BEGIN CATCH
         -- Handle the error (you can log or do other actions here)
