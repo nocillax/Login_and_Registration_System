@@ -1,0 +1,42 @@
+// Create this Dependency file in Tables/Programmability/Stored Procedures/dbo.InsertUser
+
+USE [UserRegistrationDB]
+GO
+/****** Object:  StoredProcedure [dbo].[InsertUser]    Script Date: 12/7/2023 11:17:09 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[InsertUser]
+    @FirstName NVARCHAR(50),
+    @LastName NVARCHAR(50),
+    @Username NVARCHAR(50),
+    @Password NVARCHAR(255),
+    @Email NVARCHAR(15),
+    @UserRole NVARCHAR(20) = 'User',
+    @PhoneNumber NVARCHAR(20),
+    @Religion NVARCHAR(50),
+    @Nationality NVARCHAR(50),
+    @MaritalStatus NVARCHAR(20),
+    @University NVARCHAR(200)
+
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    BEGIN TRY
+        -- Check if the username already exists
+        IF EXISTS (SELECT 1 FROM Users WHERE Username = @Username)
+        BEGIN
+            THROW 50000, 'Username already exists. Please choose a different username.', 1;
+        END
+
+        -- Insert the new user
+        INSERT INTO Users (FirstName, LastName, Username, Password, Email, UserRole, PhoneNumber, Religion, DateOfBirth, Nationality, MaritalStatus, University)
+        VALUES (@FirstName, @LastName, @Username, @Password, @Email, @UserRole, @PhoneNumber, @Religion, @DateOfBirth, @Nationality, @MaritalStatus, @University);
+    END TRY
+    BEGIN CATCH
+        -- Handle the error (you can log or do other actions here)
+        THROW;
+    END CATCH;
+END;
