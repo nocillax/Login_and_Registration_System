@@ -1,0 +1,17 @@
+// Create a database, inside the database create a table named "Users". Here by deafult while registration, the role would be "user"
+
+CREATE TABLE Users (
+    UserID INT PRIMARY KEY IDENTITY(1,1),
+    FirstName NVARCHAR(50),
+    LastName NVARCHAR(50),
+    Username NVARCHAR(50),
+    Password NVARCHAR(255),
+    Email NVARCHAR(255),
+    UserRole NVARCHAR(20) DEFAULT 'User',
+    PhoneNumber NVARCHAR(20),
+    Religion NVARCHAR(50),
+    DateOfBirth DATE,
+    Nationality NVARCHAR(50),
+    MaritalStatus NVARCHAR(20),
+    University NVARCHAR(200)
+);
